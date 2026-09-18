@@ -1,4 +1,5 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "java.debug.settings.envFile": "${workspaceFolder}/.env"
+    "java.debug.settings.envFile": "${workspaceFolder}/backend/.env",
+    "java.compile.nullAnalysis.mode": "disabled"
 }
