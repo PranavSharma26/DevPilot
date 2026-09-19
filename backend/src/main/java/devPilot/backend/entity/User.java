@@ -3,8 +3,6 @@ package devPilot.backend.entity;
 import java.time.Instant;
 import java.util.UUID;
 
-import com.google.auto.value.AutoValue.Builder;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,20 +11,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter 
+@Getter
 @Setter
-@NoArgsConstructor 
-@AllArgsConstructor 
-@Table(name="users")
-@Builder 
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "users")
+@Builder
 public class User {
 
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
@@ -43,7 +42,7 @@ public class User {
     private String avatarUrl;
 
     @Column(name = "access_token", nullable = false, columnDefinition = "TEXT")
-    private String AccessToken;
+    private String accessToken;
 
     @Column(name = "token_scopes", length = 500)
     private String tokenScopes;
@@ -51,11 +50,10 @@ public class User {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
-    @PrePersist 
-    void onCreate(){
-        if(createdAt == null){
+    @PrePersist
+    void onCreate() {
+        if (createdAt == null) {
             createdAt = Instant.now();
         }
     }
-
 }
